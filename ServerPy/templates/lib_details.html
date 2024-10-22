@@ -1,0 +1,24 @@
+{% extends "include/base.html" %}
+{% load static %}
+
+{% block page_heading %}
+  [id={{item.id}}] Просмотр состава библиотеки
+{% endblock page_heading %}
+
+{% block page_content %}
+<!-- v lib v -->
+{% include "include/library_unit.html" %}
+<!-- ^ lib ^ -->
+
+<h3>
+  Хранимые диски:
+</h3>
+
+<!-- v disks v -->
+<div id="disks">
+  {% for item in items %}
+    {% include "include/disk_unit.html" %}
+  {% endfor %}
+</div>
+<!-- ^ disks ^ -->
+{% endblock page_content %}

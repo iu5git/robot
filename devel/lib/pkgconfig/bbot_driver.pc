@@ -1,8 +1,0 @@
-prefix=/root/ros/devel
-
-Name: bbot_driver
-Description: Description of bbot_driver
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

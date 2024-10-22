@@ -1,0 +1,108 @@
+@import "../../index";
+$size: 360px;
+$cell_margin: 10px;
+$cell-size: 100px;
+$cell-before-w: 10px;
+$cell-before-h: calc($cell-size + 2px);
+$btn-size: 40px;
+/* 
+  с размерами трапеций все сложно, потому что
+  изменение размеров ::after и ::before приводит к их
+  смещению
+  поэтому все на магических константах
+*/
+
+
+.button_control_panel {
+
+  display: flex;
+  flex-direction: column;
+  height: $size;
+  width: $size;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center
+  }
+
+  &__cell {
+    display: flex;
+    background-color: transparent;
+    width: $cell-size;
+    height: $cell-size;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: $cell_margin;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__square {
+    display: flex;
+    border-radius: $border-radius;
+    width: $cell-before-h;
+    height: $cell-before-h;
+    background-color: var(--cssColor);
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+      background-color: var(--cssColor);
+    }
+
+    &:hover {
+      background-color: var(--cssHoverColor);
+    }
+  }
+
+  &__triangle {
+    background-color: transparent;
+    border: none;
+    border-left: $btn-size solid transparent;
+    border-right: $btn-size solid transparent;
+    border-bottom: $btn-size solid var(--cssColor);
+    padding: 10px;
+    display: flex;
+    height: 100%;
+    cursor: pointer;
+
+    &:hover {
+      border-bottom-color: var(--cssHoverColor);
+    }
+
+    &:hover::before, &:hover::after {
+      background-color: var(--cssHoverColor);
+    }
+
+    &::after, &::before {
+      content: "";
+      position: absolute;
+      background-color: var(--cssColor);
+    }
+
+    &::after {
+      width: 4px;
+      height: 22px;
+      top: calc($cell-size / 2);
+      left: 8px;
+      transform: rotate(90deg);
+      /* top-left | top-right | bottom-right | bottom-left */
+      border-radius: 4px 0 0 4px;
+    }
+
+    &::before {
+      width: $cell-before-w;
+      height: $cell-before-h;
+      top: calc(($cell-before-w + $cell-size) / 2 - 3px);
+      left: calc($cell-before-w / 2);
+      transform: rotate(90deg);
+      border-radius: $border-radius;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@import '../../index';
+@import '../spinner/spinner-variables.scss';
+
+.ws_notif {
+  @extend .plate;
+  position: sticky;
+  top: 1rem;
+  right: 1rem;
+  min-width: 10vw;
+  width: 11rem;
+  float: right;
+  margin-top: 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+
+
+  &__container {
+    display: flex;
+    width: 100%;
+    padding: 0.25rem;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+
+  &__row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    &__message {
+      @extend .ws_notif__row;
+      flex-shrink: 1;
+      word-break: break-all;
+      overflow: hidden;
+    }
+
+    & > span {
+      display: flex;
+      font-size: 1rem;
+      height: 1.5rem;
+    }
+  }
+
+
+  &__heading, &__btn {
+    @extend .btn-theme;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 2rem;
+    padding: 0.25rem;
+  }
+
+
+  &__heading {
+    font-weight: bold;
+    letter-spacing: 2.5px;
+    border-radius: $border-radius $border-radius 0 0;
+  }
+
+  &__status {
+    font-weight: bold;
+    letter-spacing: 1.5px;
+
+    @extend .theme-text;
+    
+    &.error {
+      color: $loader-border-color-error;
+    }
+    // &.loading, &.online, &.offline {
+    //   color: $loader-border-color-loading;
+    // }
+  }
+}

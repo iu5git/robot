@@ -1,0 +1,40 @@
+@use 'sass:map';
+@import '../../index';
+
+
+
+// //////////////////////////
+// размер
+// //////////////////////////
+
+// Приходится манипулировать с размерами, чтобы перекрыть баги анимации
+// лучше, чтобы размеры были кратны 10 в пикселях
+// увеличение коэффициента наращивает размер круга перекрытия - спасает от всего
+$loader-size: 5em;             // default=10em
+$loader-border-width: 0.8em;   // default=1em     ширина тени, формирующей границу
+$loader-offset-coef: 0.04;     // default=0.02    для 10em и 1 em достаточно 2%
+
+
+
+// //////////////////////////
+// цвета
+// //////////////////////////
+
+$loader-border-color-loading:  map.get($colors, 'green', 'darken-3'); // #0d47a1
+$loader-border-color-online:   map.get($colors, 'green', 'darken-3'); // #2e7d32
+$loader-border-color-offline:  map.get($colors, 'red', 'darken-4');   // #b71c1c
+$loader-border-color-error:    map.get($colors, 'red', 'darken-4');   // #b71c1c
+$loader-bkgd: $theme-plate-bkgd;
+
+
+
+// //////////////////////////
+// скорость анимации
+// //////////////////////////
+
+$round-time: 2s; // 180 deg / s
+$timing: $round-time ease;
+$timing-delay: calc($round-time * 0.75);
+// $timing: calc($round-time*1.5) cubic-bezier(0.4, 0.0, 0.2, 1);
+// $timing: 2s ease;
+// $timing-delay: 1.5s;

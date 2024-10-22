@@ -1,0 +1,14 @@
+{% extends "include/base.html" %}
+{% load static %}
+
+{% block page_heading %}
+  Библиотеки дисков
+{% endblock page_heading %}
+{% block page_heading_url %}
+{% endblock page_heading_url %}
+
+{% block page_content %}
+  {% for item in items %}
+    {% include "include/library_unit.html" %}
+  {% endfor %}
+{% endblock page_content %}

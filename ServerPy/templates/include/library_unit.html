@@ -1,0 +1,14 @@
+{% load static %}
+<!-- v lib unit v -->
+<div class="row answer info">
+  <div class="row">
+    <div class="text-container">
+      <p>
+        <h5>
+          <a href="{% url 'library' pk=item.id %}">{{ item.title }}</a>
+        </h5>
+        {{item.description}}
+      </p>
+    </div>
+  </div>
+</div>

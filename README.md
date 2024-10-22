@@ -1,134 +1,124 @@
-# Робот-гид
+# GuideBot
+Дипломный проект в МГТУ им. Баумана
 
-ветка robot - Ros на роботе
+**[Switch to English](README_ENG.md)**
 
-ветка robot-user - Ros на сервере 
+# Описание #
 
-## Cсылки
-###### Репозиторий
-	https://github.com/kravtandr/bbot/tree/robot-user
+# Материалы #
+- [Облако](https://drive.google.com/drive/folders/1_WAW31vtC9gaj0y2e-LKjm6cnkcJSpfA)
+- [Notion](https://www.notion.so/Robo-f3258db8742045b69fb7596a01b7c649)
+- [Ведомость](https://docs.google.com/spreadsheets/d/1mbreOyS2strwakkSfiQ9_aJJ-Iqti-MNq-A9kCi9TpU/edit#gid=0)
 
-###### Методичка по ROS
-	https://github.com/kravtandr/ros_metod/blob/master/Методичка%20ROS.md
+# Научрук #
+- [Антон Канев](http://iu5.bmstu.ru/user/profile.php?id=2271)
 
-###### Подробное описание проекта от Амперки
-	https://amperka.ru/blogs/projects/abot-robot-part-1
+# Разработчики #
+- [Кравцов Андрей](https://vk.com/kravtandr)
+- [Волгина Анна](https://vk.com/luckyhorseshoe)
+- [Кириллов Денис](https://vk.com/denactive)
+- [Сысойкин Егор](https://bmstu.codes/e.sysoykin)
+- [Игорь Шпак](https://bmstu.codes/i.shpak)
+- [Дьяконова Светлана](#)
 
-###### Для настройки локальной сети
-	https://husarnet.com/
+# Установка и начало работы #
 
-![Image alt](https://github.com/kravtandr/ros_metod/raw/master/images/robot.png)
+### Разработка
+**dev-сервер + Django**
 
-Для начала работы потребуется Ubuntu Focal (20.04) . Именно Ubuntu Focal (20.04), другие версии не подойдут. 
+**Запуск (из корня проекта)**
 
-*Предупреждение: Если у вас apple silicon или видеокарта AMD, то gazebo, rviz и rqt могут работать некорректно.*
-## Основные команды
-**roscore** - запуск ядра ROS
+Скрипт пока только под Windows 10
+  1. ```npm i```
+  2. ```npm start```
 
-**rostopic list** - просмотр всех запущенных топиков
-
-**source devel/setup.bash** - инициализация констант и переменных среды для работы с ROS в конкретной сущности терминала 
-
-**rosrun** - позволяет запускать исполняемый файл (ноду) в произвольном пакете из любого места без указания его имени.
-
-**roslaunch** - позволяет запускать .launch файлы, в которых может быть много различных нод.
-
-**catkin_make** - билд проекта
-
-**rqt** - запуск утилиты rqt
-## Запуск робота
-	cd ros && source devel/setup.bash &&  roslaunch bbot_driver abot_drivers.launch 
-
-## Запуск сервера
-	- Запуск ядра
-	roscore
-	
-	- Запуск бекенда на джанго
-	cd ~/Desktop/ROS_ON_SERVER/robo/ServerPy	
-	sudo python3 manage.py runserver 127.0.0.1:8080
-	
-	- Запуск фронтенда на реакт
-	cd ~/Desktop/ROS_ON_SERVER/robo/WebClient	
-	cd
-	
-	- Запуск листнера вебсоткета для передачи в топики ROS
-	cd ~/ros/Scripts
-	python3 WSListner_RosPublisher.py
-
-	- Запуск визуализации
-	cd ros && source devel/setup.bash && roslaunch abot_description display_movement.launch
-	- Запуск slam
-	roslaunch abot_description bringup.launch
+Может, сделаю и для Linux или кросс-платформенный скрипт с TMUX.
+- Ubuntu 20.04
+  1. Открыть 2 терминала.
+  2. См разделы **Установка** секций **Сервер** и **Web-клиент**.
 
 
+### Сервер
+**Технические требования**
 
-## Запуск ручного управления
-###### Server 
-	sudo xboxdrv --silent
-	rosparam set joy_node/dev "/dev/input/js1"
-	rosrun joy joy_node
-	roslaunch abot_description bringup.launch  
+- Windows 10 / Ubuntu 20.04
 
-## Сохранить карту
-	cd ~/ros/src/abot_slam/maps/  
-	rosrun map_server map_saver -f map1  
+**Программное обеспечение**
+
+- python 3.9
+- python libraries from [requirements.txt](./ServerPy/requirements.txt)
+
+**Установка**
+
+1. ```cd ServerPy```
+2. ```sudo apt-get install python3.9```
+3. __Необязательно__ В Linux интерпретатор питона именуется __python3__, а в  Windows - __py__.
+
+    ```alias py=python3```
+4. __Необязательно__ Этот шаг можно пропустить, если не хотите использовать virtual environment. Переходите на пункт 6.
+
+    ```sudo apt-get install python3.9-venv```
+5. ```py -m venv venv```
+6. Windows: ```./venv/Scripts/activate```
+    
+    Linux: ```source venv/bin/activate```
+7. В командной строке может появиться красное сообщение про django-logger. Это __нормально__.
+
+    ```pip install -r requirements```
+8. ```py manage.py collectstatic``` 
+9. ```py manage.py runserver``` 
+
+---
+
+### Веб-клиент
+**Технические требования**
+
+- Windows 10 / Ubuntu 20.04
+
+**Программное обеспечение**
+
+- npm 6.14.11+
+- node 14.16.0+
+- js libraries from [package.json](./WebClient/package.json)
+
+**Установка**
+
+1. ```cd WebClient```
+2. ```sudo apt-get install nodejs npm```
+3. ```npm install -g npm@latest```
+4. ```npm i```
+5. ```npm start```
+
+---
+
+### Мобильное приложение
+**Технические требования**
+
+- Android 8.0+
+
+**Программное обеспечение**
+
+-
+
+**Установка**
+
+-
+
+---
+
+### Мобильная платформа PI
+**Технические требования**
+
+- Raspberry PI 4
+
+**Программное обеспечение**
+
+-
+
+**Установка**
+
+-
 
 
-## Настройка сети ROS
-![Image alt](https://github.com/kravtandr/ros_metod/raw/master/images/network.png)
-
- Документация https://wiki.ros.org/ROS/Tutorials/MultipleMachines
-### При подключении к новой сети
-
-1. sudo nano /etc/hosts
-	прописать нужные айпи
-
-2. Sudo nano ~/.bashrc
-
-	 Robot-user
-		echo "ROS_MASTER_URI=http://robot-user:11311" >> ~/.bashrc
-		echo "ROS_HOSTNAME=robot-user" >> ~/.bashrc
-		echo "ROS_IP=192.XX.XX.XX" >> ~/.bashrc
-		
-	Robot 
-		echo "ROS_MASTER_URI=http://robot-user:11311" >> ~/.bashrc
-		echo "ROS_HOSTNAME=robot" >> ~/.bashrc
-		echo "ROS_IP=192.XX.XX.XX" >> ~/.bashrc
-
-3. Перезагружаем настройки командной строки
-	source ~/.bashrc
-
-
-### Конфиг wpa_suplicant
-	/etc/wpa_supplicant/wpa_supplicant.conf
-### Переключение на другую сеть
-	sudo wpa_cli -i wlan0 list_networks
-	sudo wpa_cli -i wlan0 select_network 0
-
-### Диаграмма развертывания 
-![Image alt](https://github.com/kravtandr/ros_metod/raw/master/images/deployment.png)
-
-### Структурная схема робота 
-![Image alt](https://github.com/kravtandr/ros_metod/raw/master/images/hard.png)
-
-### FAQ 
-###### Описание: Ошибка в `rosrun tf view_frames`
-###### Решение: менять файл через консоль /opt/ros/noetic/lib/tf
-	https://github.com/ros/geometry/pull/193/files#diff-6752a402ecb9165369200c2f88abbe0efa471d0b69f2c9e6d907b71f0189cdba
-
-
-###### Описание: **CMake Error**  controller_manager-config.cmake:
-	**CMake Error** at /opt/ros/noetic/share/catkin/cmake/catkinConfig.cmake:83 (find_package):
-	  Could not find a package configuration file provided by
-	  "controller_manager" with any of the following names:
-	    controller_managerConfig.cmake
-	    controller_manager-config.cmake
-######  Решение: 
-	sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-	sudo apt update
-	sudo apt-get install ros-noetic-controller-manager
-	sudo apt-get install ros-noetic-ros-control ros-noetic-ros-controllers
-
-###### Описание: подключение геймпада
-###### Решение:
-	https://howchoo.com/pi/xbox-controller-raspberry-pi
+# Лицензия #
+[Лицензия GNU GPLv2](./LICENSE)

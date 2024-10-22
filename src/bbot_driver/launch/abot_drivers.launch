@@ -1,6 +1,0 @@
-<launch>
-	<node name="encoders" pkg="bbot_driver" type="encoders" output="screen" />
-	<node name="dc_motors" pkg="bbot_driver" type="dc_motors" output="screen" />
-	<include file="$(find bbot_driver)/launch/bbot_pid.launch" />
-	<include file="$(find bbot_driver)/launch/bbot_lidar.launch" />
-</launch>

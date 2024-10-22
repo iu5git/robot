@@ -1,0 +1,12 @@
+@import '../../index';
+
+.log {
+  overflow-y: scroll;
+  width: 100%;
+  min-height: 250px;
+
+  &__command {
+    color: $theme-grey;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,111 @@
+@use "sass:map";
+@import './static/scss/materialize';
+@import './static/scss/fonts_declaration.scss';
+
+$theme-color:           map.get($colors, 'light-blue', 'lighten-1');  // light-blue lighten-1 = #29b6f6
+$theme-grey:            map.get($colors, 'grey', 'darken-3');  // #424242;
+$theme-bkgd:            map.get($colors, 'grey', 'lighten-5');  // #fafafa;  use @export instead 
+$theme-plate-bkgd:      map.get($colors, 'grey', 'lighten-4');  // #fafafa;  use @export instead 
+$border-radius:        10px;
+$border-radius-small:  calc($border-radius / 2);
+$plate-margin:         0.75rem;
+
+html {
+  background-color: $theme-bkgd;
+  color: $theme-grey;
+  height: 100vh
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.theme-color {
+  background-color: $theme-color;
+  color: #fff;
+}
+
+.theme-text {
+  color: $theme-color;
+}
+
+.btn-theme {
+  @extend .theme-color;
+  font-size: 1rem;
+  border-radius: 2px;
+  border: none;
+  padding: 0.25rem 0;
+  margin: 0;
+  width: 100%;
+  letter-spacing: 0.5px;
+
+  &:focus {
+    @extend .theme-color;
+  }
+}
+
+.plate {
+  @extend .grey, .lighten-4;
+  @extend .z-depth-2;
+
+  display: flex;
+  border-radius: $border-radius;
+  height: fit-content;
+  margin: $plate-margin;
+}
+
+.w-fill {
+  width: -webkit-fill-available;
+}
+
+.w-shrink {
+  width: fit-content;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+.w-60 {
+  width: 60%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.w-40 {
+  width: 40%;
+}
+
+.w-30 {
+  width: 30%;
+}
+
+.w-25 {
+  width: 25%;
+}
+
+.jc-sp-btw {
+  display: flex;
+  justify-content: space-between;
+}
