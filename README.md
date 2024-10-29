@@ -37,6 +37,7 @@
 
 **rqt** - запуск утилиты rqt
 ## Buld проекта
+### [Видео - Билд и запуск проекта на сервере](https://vk.com/video212798808_456239532?list=ln-ljbzFmyc21jslD9qd6)
 ##### Для сборки используется catkin
 ##### Устанавливаем catkin
 	sudo apt-get install -y python3-catkin-tools
