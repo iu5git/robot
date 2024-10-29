@@ -40,11 +40,11 @@
 	Для сборки используется catkin
         - устанавливаем catkin
 	sudo apt-get install -y python3-catkin-tool
- 	- устанавливаем зависимости
+        - устанавливаем зависимости
   	sudo apt-get install -y python3-rosdep python3-rosinstall python3-rosinstall-generator \python3-wstool build-essential ros-noetic-joint-state-publisher-gui net-tools \ros-noetic-pid ros-noetic-joy xboxdrv ros-noetic-gmapping ros-noetic-joy \ros-noetic-map-server ros-noetic-navigation
         - переходим в папку проекта и экспортируем переменные среды с помощью скрипта
    	cd robot && source devel/setup.sh
-    	- билдим проект
+        - билдим проект
      	catkin_make
         Если не сбилдилось удалить старую папку build и повторить catkin_make 
 ## Запуск робота
