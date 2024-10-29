@@ -39,7 +39,7 @@
 ## Buld проекта
 ##### Для сборки используется catkin
 ##### Устанавливаем catkin
-	sudo apt-get install -y python3-catkin-tool
+	sudo apt-get install -y python3-catkin-tools
 ##### Устанавливаем зависимости
   	sudo apt-get install -y python3-rosdep python3-rosinstall python3-rosinstall-generator \python3-wstool build-essential ros-noetic-joint-state-publisher-gui net-tools \ros-noetic-pid ros-noetic-joy xboxdrv ros-noetic-gmapping ros-noetic-joy \ros-noetic-map-server ros-noetic-navigation
 ##### Переходим в папку проекта и экспортируем переменные среды с помощью скрипта
