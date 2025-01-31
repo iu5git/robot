@@ -4,6 +4,10 @@
 
 ветка robot-user - Ros на сервере 
 
+ветка webapp - веб приложение для управление роботом по ws
+
+ветка llm-nav - Ros на сервере + симулятор + llm для навигации
+
 ## Cсылки
 ###### Репозиторий
 	https://github.com/kravtandr/bbot/tree/robot-user
