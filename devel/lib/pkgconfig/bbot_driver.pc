@@ -1,4 +1,4 @@
-prefix=/root/ros/devel
+prefix=/home/kravtandr/robot/devel
 
 Name: bbot_driver
 Description: Description of bbot_driver

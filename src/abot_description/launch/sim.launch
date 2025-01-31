@@ -1,0 +1,37 @@
+<launch>
+  <!-- Запуск ROS Master -->
+  <master auto="start"/>
+  <!-- Gazebo empty world launch file -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find abot_description)/worlds/my.world"/>
+    <arg name="debug" value="false" />
+    <arg name="gui" value="true" />
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="verbose" value="true"/>
+  </include>
+
+  <!-- Robot Description from URDF -->
+  <arg name="model" default="$(find abot_description)/urdf/abot.xacro" />
+  <param name="use_gui" value="true"/>
+
+  <!-- Nodes -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find abot_description)/rviz/abot_camera.rviz" required="true"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  
+  <!-- Spawn the robot model in Gazebo -->
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model abot" output="screen"/>
+
+  <!-- Uncomment and include additional launch files as needed -->
+  <include file="$(find abot_navigation)/launch/abot_navigation.launch" />
+  <include file="$(find abot_base)/launch/abot_base.launch" />
+  <include file="$(find abot_control)/launch/abot_control.launch" />
+  <include file="$(find abot_teleop)/launch/abot_teleop.launch" />
+  <include file="$(find abot_slam)/launch/abot_slam.launch" />
+  
+  <node name="cmd_vel_mux" pkg="topic_tools" type="mux" args="/cmd_vel /cmd_vel_mux">
+    <remap from="mux" to="/cmd_vel_mux"/>
+  </node>
+</launch>

@@ -1,21 +1,97 @@
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
-*.DS_Store
-*.idea
-# Test binary, built with `go test -c`
-*.test
+# General OS-generated files
+.DS_Store
+Thumbs.db
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-
-# Dependency directories (remove the comment below to include it)
-.vscode/
+# ROS-specific files
 build/
 devel/
-vendor/
+install/
+log/
+*.bag
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+*.log
+*.launch~
+*.test
+*.out
+
+# Python-specific files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+Pipfile
+Pipfile.lock
+.env
+.venv
+*.ipynb_checkpoints
+
+# C++-specific files
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.exe
+*.dylib
+*.out
+*.class
+*.lo
+*.la
+*.loT
+*.gch
+*.dSYM/
+*.gcno
+*.gcda
+*.gcov
+*.swp
+*.swo
+
+# IDE and editor-specific files
 .idea/
+.vscode/
+*.code-workspace
+*.sublime-workspace
+*.sublime-project
+
+# Git-specific files
+*.orig
+*.rej
+*.patch
+*.diff
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.old
+*.swp
+*.swo
+*.~lock.*
+*.~*
+
+# ROS workspace-specific files
+catkin_ws/build/
+catkin_ws/devel/
+catkin_ws/install/
+catkin_ws/log/
+catkin_ws/.catkin_tools/
+
+# Database and other generated files
 pgdata/
+*.db
+*.sqlite3
+
+# Custom directories
+./build/
+./vscode/
+Scripts/llm_brain/routes/*

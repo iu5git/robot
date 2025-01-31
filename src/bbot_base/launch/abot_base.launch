@@ -1,6 +1,0 @@
-<launch>
-	<node name="bbot_base_node" pkg="bbot_base" type="bbot_base_node" output="screen">
-    	<param name="control_frequency" type="int" value="100"/>
-		<param name="max_wheel_angular_speed" type="double" value="10.0"/>
-	</node>
-</launch>
